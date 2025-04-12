@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProgressTracker {
+public class ProgressTracker implements Tracker {
     private List<Double> gewichtHistorie;
     private List<Double> lengteHistorie;
     private String bestandspad = "gegevens.txt";
@@ -11,6 +11,14 @@ public class ProgressTracker {
         this.gewichtHistorie = new ArrayList<>();
         this.lengteHistorie = new ArrayList<>();
         laadGegevens();
+    }
+
+    @Override
+    public void toonOverzicht() {
+        System.out.println("Gewichtsgeschiedenis:");
+        for (Double gewicht : gewichtHistorie) {
+            System.out.println("- " + gewicht + " kg");
+        }
     }
 
     public void voegGegevensToe(Double gewicht, double lengte) {

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.*;
 
-public class CalorieTracker {
+public class CalorieTracker implements Tracker {
     private Persoon persoon;
     private List<String> voedingsmiddelenDatabase;
     private List<Maaltijd> dagboek;
@@ -25,6 +25,14 @@ public class CalorieTracker {
 
     public boolean zoekVoedingsmiddel(String naam) {
         return voedingsmiddelenDatabase.contains(naam);
+    }
+
+    @Override
+    public void toonOverzicht() {
+        System.out.println("Overzicht van je dagboek:");
+        for (Maaltijd maaltijd : dagboek) {
+            System.out.println("- " + maaltijd.getNaam() + ": " + maaltijd.getCalorieën() + "kcal");
+        }
     }
 
     public List<Maaltijd> getDagboek() {

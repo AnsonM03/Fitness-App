@@ -76,11 +76,14 @@ public class MainController {
     private void voegGewichtToe() {
         try {
             System.out.print("Voer je gewicht in (kg): ");
+
             double gewicht = Double.parseDouble(scanner.nextLine());
             System.out.print("Voer je lengte in (m): ");
+
             double lengte = Double.parseDouble(scanner.nextLine());
             tracker.voegGegevensToe(gewicht, lengte);
             System.out.println("Gewicht en lengte toegevoegd.");
+
         } catch (NumberFormatException e) {
             System.out.println("Ongeldige invoer. Gewicht en lengte moeten een getal zijn.");
         }

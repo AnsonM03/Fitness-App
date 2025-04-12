@@ -12,10 +12,6 @@ public class BMICalculator extends Persoon {
         }
     }
 
-    public void toonBMI(double bmi) {
-        System.out.println("De berekende BMI is: " + bmi);
-    }
-
     public String classificeerBMI(double bmi) {
         if (bmi < 18.5) {
             return "Ondergewicht";
