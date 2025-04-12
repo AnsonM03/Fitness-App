@@ -11,9 +11,9 @@ public class MainController {
 
     private static final String[] MENU_OPTIES = {
             "Voeg gewicht en lengte toe",
+            "Bekijk gebruikersgegevens",
             "Toon voortgangsgrafiek",
-            "Selecteer trainingsdoel",
-            "Genereer en sla workoutplan op",
+            "Selecteer trainingsdoel en genereer workoutplan",
             "Bereken BMI",
             "Beheer dagboek",
             "Afsluiten"
@@ -51,13 +51,13 @@ public class MainController {
                 voegGewichtToe();
                 break;
             case 2:
-                toonGrafiek();
+                toonGebruikersGegevens();
                 break;
             case 3:
-                selecteerDoel();
+                toonGrafiek();
                 break;
             case 4:
-                genereerEnSlaPlanOp();
+                selecteerDoelEnGenereerPlan();
                 break;
             case 5:
                 berekenBMI();
@@ -93,48 +93,40 @@ public class MainController {
         grafiek.printGrafiek();
     }
 
-    private void selecteerDoel() {
+    private void selecteerDoelEnGenereerPlan() {
         System.out.println("Beschikbare doelen: Afvallen, Spieropbouw, Conditie verbeteren");
         System.out.print("Kies een doel: ");
         String doel = scanner.nextLine();
         try {
             planner.selecteerDoel(doel);
             System.out.println("Geselecteerd doel: " + planner.getGeselecteerDoel());
+
+            WorkoutPlan plan = planner.genereerWorkoutPlan(doel);
+            System.out.println("Gegenereerd workoutplan: ");
         } catch (IllegalArgumentException e) {
             System.out.println("Fout: " + e.getMessage());
         }
     }
 
-    private void genereerEnSlaPlanOp() {
-        String doel = planner.getGeselecteerDoel();
-        if (doel == null) {
-            System.out.println("Je moet eerst een trainingsdoel kiezen.");
-            return;
-        }
-
-        WorkoutPlan plan = planner.genereerWorkoutPlan(doel);
-        plan.printWorkoutPlan();
-    }
-
     private void berekenBMI() {
-        BMICalculator bmiCalculator = new BMICalculator();
         try {
             Double gewicht = tracker.getLaatsteGewicht();
             Double lengte = tracker.getLaatsteLengte();
 
-            if (gewicht == null && lengte == null) {
-                System.out.println("Er zijn nog geen gegevens beschikbaar om BMI te berekenen.");
+            if (gewicht == null || lengte == null) {
+                System.out.println("Geen gegevens beschikbaar.");
                 return;
             }
 
-            double bmi = bmiCalculator.berekenBMI(tracker);
-            String classificatie = bmiCalculator.classificeerBMI(bmi);
-
-            System.out.printf("De BMI van %s is: %.2f (%s)\n", gebruiker.getNaam(), bmi, classificatie);
+            BMICalculator bmiCalculator = new BMICalculator(gewicht, lengte);
+            double bmi = bmiCalculator.berekenBMI();
+            System.out.printf("BMI van %s is: %.2f (%s)\n",
+                    gebruiker.getNaam(), bmi, bmiCalculator.classificeerBMI(bmi));
         } catch (IllegalArgumentException e) {
-            System.out.println("Fout bij het berekenen van BMI: " + e.getMessage());
+            System.out.println("Fout bij BMI-berekening: " + e.getMessage());
         }
     }
+
 
     private void beheerDagboekMetBestand() {
         System.out.println("\n--- Beheer dagboek ---");
@@ -195,6 +187,23 @@ public class MainController {
             for (Maaltijd maaltijd : dagboek) {
                 System.out.println(maaltijd.getNaam() + " - " + maaltijd.getCalorieën() + " calorieën");
             }
+        }
+    }
+
+    private void toonGebruikersGegevens() {
+        System.out.println("\n--- Gebruikersgegevens ---");
+        System.out.println("ID: " + gebruiker.getId());
+        System.out.println("Naam: " + gebruiker.getNaam());
+        System.out.println("Gewicht: " + gebruiker.getGewicht() + " kg");
+        System.out.println("Lengte: " + gebruiker.getLengte() + " m");
+
+        try {
+            BMICalculator bmiCalculator = new BMICalculator(gebruiker.getGewicht(), gebruiker.getLengte());
+            double bmi = bmiCalculator.berekenBMI();
+            String classificatie = bmiCalculator.classificeerBMI(bmi);
+            System.out.printf("BMI: %.2f (%s)\n", bmi, classificatie);
+        } catch (IllegalArgumentException e) {
+            System.out.println("BMI kon niet berekend worden: " + e.getMessage());
         }
     }
 }

@@ -4,8 +4,8 @@ import java.util.List;
 public class Persoon {
     private int id;
     private String naam;
-    private double gewicht;
-    private double lengte;
+    protected double gewicht;
+    protected double lengte;
     private double bmi;
 
     public Persoon(int id, String naam, double gewicht, double lengte) {
@@ -14,9 +14,14 @@ public class Persoon {
         this.gewicht = gewicht;
         this.lengte = lengte;
     }
-        public int getId() {
+
+    public Persoon(double gewicht, double lengte) {
+    }
+
+    public int getId() {
             return id;
         }
+
         public String getNaam() {
             return naam;
         }
@@ -25,16 +30,8 @@ public class Persoon {
             return gewicht;
         }
 
-        public void setGewicht(double gewicht) {
-            this.gewicht = gewicht;
-        }
-
         public double getLengte() {
             return lengte;
-        }
-
-        public void setLengte(double lengte) {
-            this.lengte = lengte;
         }
 
         public double getBmi() {

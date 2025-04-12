@@ -1,14 +1,14 @@
-public class BMICalculator {
+public class BMICalculator extends Persoon {
 
-    // Methode om BMI te berekenen op basis van ProgressTracker
-    public double berekenBMI(ProgressTracker tracker) {
-        Double laatsteGewicht = tracker.getLaatsteGewicht();
-        Double laatsteLengte = tracker.getLaatsteLengte();
+    public BMICalculator(double gewicht, double lengte) {
+        super(gewicht, lengte);
+    }
 
-        if (laatsteGewicht != null && laatsteLengte != null && laatsteLengte > 0) {
-            return laatsteGewicht / (laatsteLengte * laatsteLengte); // Bereken BMI
+    public double berekenBMI() {
+        if (gewicht > 0 && lengte > 0) {
+            return gewicht / (lengte * lengte);
         } else {
-            throw new IllegalArgumentException("Ongeldige gegevens: Gewicht of lengte ontbreekt.");
+            throw new IllegalArgumentException("Lengte of gewicht is ongeldig.");
         }
     }
 
