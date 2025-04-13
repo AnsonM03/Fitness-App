@@ -74,13 +74,28 @@ public void laadGegevens() {
 
     public Grafiek genereerGrafiek(String tijdsperiode) {
         System.out.println("Grafiek gegenereerd voor tijdsperiode: " + tijdsperiode);
-
         Grafiek grafiek = new Grafiek();
-
         List<String> datapunten = new ArrayList<>();
-        for (int i = 0; i < tijdsperiode.length(); i++) {
-            datapunten.add("Gewicht:" + gewichtHistorie.get(i) + "kg, Lengte: " + lengteHistorie.get(i) + " m");
+
+        int aantal = 0;
+        try {
+            String[] delen = tijdsperiode.split(" ");
+            aantal = Integer.parseInt(delen[0]);
+        } catch (Exception e) {
+            System.out.println("Ongeldige invoer voor tijdsperiode.");
+            return grafiek;
         }
+
+        int max = Math.min(aantal, gewichtHistorie.size());
+
+        for (int i = 0; i < max; i++) {
+            datapunten.add("Gewicht: " + gewichtHistorie.get(i) + " kg, Lengte: " + lengteHistorie.get(i) + " m");
+        }
+
+        if (max == 0) {
+            datapunten.add("Niet genoeg data beschikbaar voor " + aantal + " metingen.");
+        }
+
         grafiek.setDataPunten(datapunten);
         return grafiek;
     }

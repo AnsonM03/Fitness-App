@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8a6371d-0917-4fa1-919d-90c01fdd70b8" name="Changes" comment="work">
-      <change afterPath="$PROJECT_DIR$/test/BMICalculatorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/CalorieTrackerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fitness-App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Fitness-App.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portfolio opdracht 2/src/Persoon.java" beforeDir="false" afterPath="$PROJECT_DIR$/Portfolio opdracht 2/src/Persoon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fitness-App/BMICalculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fitness-App/BMICalculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fitness-App/CalorieTracker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fitness-App/CalorieTracker.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fitness-App/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fitness-App/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Fitness-App/ProgressTracker.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Fitness-App/ProgressTracker.class" afterDir="false" />
-    </list>
+    <list default="true" id="b8a6371d-0917-4fa1-919d-90c01fdd70b8" name="Changes" comment="work" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744501685796</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="work">
+      <option name="closed" value="true" />
+      <created>1744551435727</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744551435727</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
