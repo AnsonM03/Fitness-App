@@ -16,6 +16,8 @@ public class Persoon {
     }
 
     public Persoon(double gewicht, double lengte) {
+        this.gewicht = gewicht;
+        this.lengte = lengte;
     }
 
     public int getId() {
