@@ -105,7 +105,7 @@ public class MainController {
             System.out.println("Geselecteerd doel: " + planner.getGeselecteerDoel());
 
             WorkoutPlan plan = planner.genereerWorkoutPlan(doel);
-            System.out.println("Gegenereerd workoutplan: ");
+            plan.printWorkoutPlan();
         } catch (IllegalArgumentException e) {
             System.out.println("Fout: " + e.getMessage());
         }
